@@ -24,15 +24,15 @@ import com.mongodb.util.JSON;
  * mongodb.
  */
 public class UserService {
-	private final DB db;
+    private final DB db;
     private final DBCollection collection;
   
-	public UserService(DB db) {
-		this.db = db;
-		this.collection = db.getCollection("users");
+    public UserService(DB db) {
+	this.db = db;
+	this.collection = db.getCollection("users");
 		  
-	}
-	/**
+     }
+     /**
      * Method to find all users
      *            		           
      * @return users
@@ -50,9 +50,9 @@ public class UserService {
                    }
                    users.add(dbObject);
                 }      
-        return users;		
+                return users;		
 	}
-	/**
+     /**
      * Method to insert a user
      * @param    
      * 			 : String - Json String 	           		           
@@ -108,7 +108,7 @@ public class UserService {
                 return "User Inserted";
 	
 	}
-	/**
+     /**
      * Method to update a user
      * @param    
      * 			 : String - Json String 	           		           
@@ -159,10 +159,10 @@ public class UserService {
             
         	}
         	else{
-        		return "User not found";
+        	      return "User not found";
      
 		 }		
-		  return "User Updated";
+	        return "User Updated";
 	}
 	
 }

@@ -44,12 +44,12 @@ public class UserService {
 		DBCursor dbObjects = collection.find();
 		DBObject dbObject = null;
 		while (dbObjects.hasNext()) {
-             dbObject = dbObjects.next();            
-             if (dbObject.get("_id") == null){
-            	return null;
-             }
-             users.add(dbObject);
-        }      
+                   dbObject = dbObjects.next();            
+                   if (dbObject.get("_id") == null){
+            	      return null;
+                   }
+                   users.add(dbObject);
+                }      
         return users;		
 	}
 	/**
@@ -81,31 +81,31 @@ public class UserService {
 		user.setProfilePic(jsonObj.getString("profilePic"));
 		BasicDBObject whereQuery = new BasicDBObject();		 
 		whereQuery.put("_id", user.getId());
-        DBCursor cursor = collection.find(whereQuery);
-        if(cursor.hasNext()) {
-            return "Duplicate Record";
-        }
-        Map<String, Object> documentMap = new HashMap<String, Object>();       
-        documentMap.put("_id", user.getId());
-        documentMap.put("firstName",user.getFirstName());
-        documentMap.put("lastName",user.getLastName());
-        documentMap.put("email",user.getEmail());
-        Map<String, Object> addrDetailMap = new HashMap<String, Object>();
-        addrDetailMap.put("street",address.getStreet());
-        addrDetailMap.put("city",address.getCity());
-        addrDetailMap.put("zip",address.getZipcode());
-        addrDetailMap.put("state",address.getState());
-        addrDetailMap.put("state",address.getCountry());
-        documentMap.put("address",addrDetailMap);
-        documentMap.put("Date",dateCreated);
-        Map<String, Object> compDetailMap = new HashMap<String, Object>();
-        compDetailMap.put("name",company.getName());
-        compDetailMap.put("website",company.getWebsite());
-        documentMap.put("company",compDetailMap);
-        documentMap.put("profilePic", user.getProfilePic());
+                DBCursor cursor = collection.find(whereQuery);
+                if(cursor.hasNext()) {
+                    return "Duplicate Record";
+                }
+                Map<String, Object> documentMap = new HashMap<String, Object>();       
+                documentMap.put("_id", user.getId());
+                documentMap.put("firstName",user.getFirstName());
+                documentMap.put("lastName",user.getLastName());
+                documentMap.put("email",user.getEmail());
+                Map<String, Object> addrDetailMap = new HashMap<String, Object>();
+                addrDetailMap.put("street",address.getStreet());
+                addrDetailMap.put("city",address.getCity());
+                addrDetailMap.put("zip",address.getZipcode());
+                addrDetailMap.put("state",address.getState());
+                addrDetailMap.put("state",address.getCountry());
+                documentMap.put("address",addrDetailMap);
+                documentMap.put("Date",dateCreated);
+                Map<String, Object> compDetailMap = new HashMap<String, Object>();
+                compDetailMap.put("name",company.getName());
+                compDetailMap.put("website",company.getWebsite());
+                documentMap.put("company",compDetailMap);
+                documentMap.put("profilePic", user.getProfilePic());
         
-        collection.insert(new BasicDBObject(documentMap));
-        return "User Inserted";
+                collection.insert(new BasicDBObject(documentMap));
+                return "User Inserted";
 	
 	}
 	/**
@@ -119,49 +119,49 @@ public class UserService {
 		User user = new User();
 		JSONObject jsonObj = new JSONObject(body);
 		BasicDBObject whereQuery = new BasicDBObject();
-        whereQuery.put("_id", jsonObj.getString("id"));
-        BasicDBObject searchQuery = new BasicDBObject().append("_id",jsonObj.getString("id"));
-        DBCursor cursor = collection.find(whereQuery);
-    	BasicDBObject newDocument = new BasicDBObject();
-        if(cursor.hasNext()) {
-            user.setFirstName(jsonObj.getString("firstName"));
-    		user.setLastName(jsonObj.getString("lastName"));
-    		user.setEmail(jsonObj.getString("email"));
-    		Address address = new Address(); 
-    		JSONObject innerJsonObject = jsonObj.getJSONObject("address");
-    		address.setStreet(innerJsonObject.getString("street"));
-    		address.setCity(innerJsonObject.getString("city"));
-    		address.setZipcode(innerJsonObject.getString("zip"));
-    		address.setState(innerJsonObject.getString("state"));
-    		address.setCountry(innerJsonObject.getString("country"));
-    		Company company = new Company();
-    		JSONObject innerJsonObject1 = jsonObj.getJSONObject("company");
-    		company.setName(innerJsonObject1.getString("name"));
-    		company.setWebsite(innerJsonObject1.getString("website"));
-    		user.setProfilePic(jsonObj.getString("profilePic"));
-            Map<String, Object> documentMap = new HashMap<String, Object>();
-            documentMap.put("firstName",user.getFirstName());
-            documentMap.put("lastName",user.getLastName());
-            documentMap.put("email",user.getEmail());
-            Map<String, Object> addrDetailMap = new HashMap<String, Object>();
-            addrDetailMap.put("street",address.getStreet());
-            addrDetailMap.put("city",address.getCity());
-            addrDetailMap.put("zip",address.getZipcode());
-            addrDetailMap.put("state",address.getState());
-            addrDetailMap.put("state",address.getCountry());
-            documentMap.put("address",addrDetailMap);
-            Map<String, Object> compDetailMap = new HashMap<String, Object>();
-            compDetailMap.put("name",company.getName());
-            compDetailMap.put("website",company.getWebsite());
-            documentMap.put("company",compDetailMap);
-            documentMap.put("profilePic", user.getProfilePic());           
-            collection.update(searchQuery, new BasicDBObject(documentMap));
+                whereQuery.put("_id", jsonObj.getString("id"));
+                BasicDBObject searchQuery = new BasicDBObject().append("_id",jsonObj.getString("id"));
+                DBCursor cursor = collection.find(whereQuery);
+    	        BasicDBObject newDocument = new BasicDBObject();
+                if(cursor.hasNext()) {
+                    user.setFirstName(jsonObj.getString("firstName"));
+    		    user.setLastName(jsonObj.getString("lastName"));
+    		    user.setEmail(jsonObj.getString("email"));
+    		    Address address = new Address(); 
+    		    JSONObject innerJsonObject = jsonObj.getJSONObject("address");
+    		    address.setStreet(innerJsonObject.getString("street"));
+    		    address.setCity(innerJsonObject.getString("city"));
+    		    address.setZipcode(innerJsonObject.getString("zip"));
+    		    address.setState(innerJsonObject.getString("state"));
+    		    address.setCountry(innerJsonObject.getString("country"));
+    		    Company company = new Company();
+    		    JSONObject innerJsonObject1 = jsonObj.getJSONObject("company");
+    		    company.setName(innerJsonObject1.getString("name"));
+    		    company.setWebsite(innerJsonObject1.getString("website"));
+    		    user.setProfilePic(jsonObj.getString("profilePic"));
+                    Map<String, Object> documentMap = new HashMap<String, Object>();
+                    documentMap.put("firstName",user.getFirstName());
+                    documentMap.put("lastName",user.getLastName());
+                    documentMap.put("email",user.getEmail());
+                    Map<String, Object> addrDetailMap = new HashMap<String, Object>();
+                    addrDetailMap.put("street",address.getStreet());
+                    addrDetailMap.put("city",address.getCity());
+                    addrDetailMap.put("zip",address.getZipcode());
+                    addrDetailMap.put("state",address.getState());
+                    addrDetailMap.put("state",address.getCountry());
+                    documentMap.put("address",addrDetailMap);
+                    Map<String, Object> compDetailMap = new HashMap<String, Object>();
+                    compDetailMap.put("name",company.getName());
+                    compDetailMap.put("website",company.getWebsite());
+                    documentMap.put("company",compDetailMap);
+                    documentMap.put("profilePic", user.getProfilePic());           
+                    collection.update(searchQuery, new BasicDBObject(documentMap));
             
-        }
-        else{
-        	return "User not found";
+        	}
+        	else{
+        		return "User not found";
      
-        }		
+		 }		
 		  return "User Updated";
 	}
 	

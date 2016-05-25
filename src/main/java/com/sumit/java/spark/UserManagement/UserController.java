@@ -17,12 +17,12 @@ public class UserController {
 		new JsonConverter());
 		
 		put("/users/updateuser", "application/json", (req, res) -> {String retStr = userservice.updateUser(req.body());
-				if (retStr == "User not found"){
-					res.status(404);
-					return ("user not found");
-				}
-				return retStr;},
-				new JsonConverter());		
+			if (retStr == "User not found"){
+				res.status(404);
+				return ("user not found");
+			}
+			return retStr;},
+			new JsonConverter());		
 			
 	}
 }

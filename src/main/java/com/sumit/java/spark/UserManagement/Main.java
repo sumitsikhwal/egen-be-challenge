@@ -26,7 +26,7 @@ package com.sumit.java.spark.UserManagement;
 	        setIpAddress(IP_ADDRESS);
 	        setPort(PORT);
 	        staticFileLocation("/public");
-	        new UserController(new UserService(mongo()));
+	        new UserController(new UserService(mongo()));	
 	    }
 	 
 	    private static DB mongo() throws Exception {

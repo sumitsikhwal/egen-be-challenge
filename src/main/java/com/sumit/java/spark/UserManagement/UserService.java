@@ -36,19 +36,19 @@ public class UserService {
      * Method to find all users
      *            		           
      * @return users
-     * 			  : List - List of users	           
+     * 			: List - List of users	           
      */
 
 	public List<DBObject> getAllUsers() {
 		List<DBObject> users = new ArrayList<>();
 		DBCursor dbObjects = collection.find();
 		DBObject dbObject = null;
-        while (dbObjects.hasNext()) {
+		while (dbObjects.hasNext()) {
              dbObject = dbObjects.next();            
-            if (dbObject.get("_id") == null){
+             if (dbObject.get("_id") == null){
             	return null;
-            }
-            users.add(dbObject);
+             }
+             users.add(dbObject);
         }      
         return users;		
 	}
@@ -57,7 +57,7 @@ public class UserService {
      * @param    
      * 			 : String - Json String 	           		           
      * @return 
-     * 			  : String  	           
+     * 			 : String  	           
      */
 	public String insertUser(String body) {
 		Date dateCreated = new Date();		

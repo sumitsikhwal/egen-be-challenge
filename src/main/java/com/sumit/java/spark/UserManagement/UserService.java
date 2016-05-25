@@ -23,22 +23,22 @@ import com.mongodb.util.JSON;
 /*This class contains the implementation of all the rest api operations.It makes insert,update and select data operations on
  * mongodb.
  */
-public class UserService {
-    private final DB db;
-    private final DBCollection collection;
+  public class UserService {
+        private final DB db;
+        private final DBCollection collection;
   
-    public UserService(DB db) {
-	this.db = db;
-	this.collection = db.getCollection("users");
+        public UserService(DB db) {
+	      this.db = db;
+	      this.collection = db.getCollection("users");
 		  
-     }
+        }
+        
      /**
      * Method to find all users
      *            		           
      * @return users
      * 			: List - List of users	           
      */
-
 	public List<DBObject> getAllUsers() {
 		List<DBObject> users = new ArrayList<>();
 		DBCursor dbObjects = collection.find();
@@ -52,6 +52,7 @@ public class UserService {
                 }      
                 return users;		
 	}
+	
      /**
      * Method to insert a user
      * @param    
@@ -165,5 +166,5 @@ public class UserService {
 	        return "User Updated";
 	}
 	
-}
+   }
 
